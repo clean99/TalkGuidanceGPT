@@ -1,0 +1,21 @@
+{
+  "manifest_version": 3,
+  "name": "SpeakToWebsite",
+  "version": "1.0",
+  "description": "Browse and interact with websites using your voice! SpeakToWebsite assists visually impaired users by providing audio feedback and enabling them to control websites through natural language commands.",
+  "action": {},
+  "permissions": [
+    "storage",
+    "tts",
+    "ttsEngine",
+    "webRequest",
+    "webNavigation",
+    "activeTab",
+    "tabs",
+    "scripting"
+  ],
+  "host_permissions": ["https://*/*"],
+  "background": {
+    "service_worker": "background.js"
+  }
+}
