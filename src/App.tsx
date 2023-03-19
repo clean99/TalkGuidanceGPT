@@ -1,7 +1,7 @@
 import * as React from 'react';
 import './App.css';
 import { getLang, getGPTApiKey, getRate, setGPTApiKey, setLang, setRate } from './storage';
-import { Lang } from './types/interface';
+import { Lang, langArray } from './types/interface';
 
 const App: React.FC = () => {
   const [apiKey, setApiKeyLocal] = React.useState<string>('');
@@ -52,10 +52,11 @@ const App: React.FC = () => {
           // @ts-ignore
           onChange={(e) => setLangLocal(e.target.value)}
         >
-          {/* Add the available languages here */}
-          <option value="en">English</option>
-          <option value="es">Spanish</option>
-          {/* ... */}
+          {
+            langArray.map(({label, value}) => (
+              <option key={value} value={value}>{label}</option>
+            ))
+          }
         </select>
       </div>
       <div className="input-group">

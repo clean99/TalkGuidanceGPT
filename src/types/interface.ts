@@ -33,6 +33,8 @@ export interface PrunedElement {
 
 export enum Lang {
   UnitedKingdom = 'en-GB',
+  China = 'zh-CN',
+  HongKong = 'zh-HK',
   UnitedStates = 'en-US',
   Italy = 'it-IT',
   Sweden = 'sv-SE',
@@ -68,9 +70,7 @@ export enum Lang {
   Norway = 'nb-NO',
   IndiaEnglish = 'en-IN',
   Denmark = 'da-DK',
-  HongKong = 'zh-HK',
   SouthAfrica = 'en-ZA',
-  China = 'zh-CN',
   Netherlands = 'nl-NL',
   Turkey = 'tr-TR',
   SouthKorea = 'ko-KR',
@@ -78,3 +78,9 @@ export enum Lang {
   CzechRepublic = 'cs-CZ',
   UnitedStatesSpanish = 'es-US',
 }
+
+export const langArray = Object.keys(Lang).map((key) => ({
+  label: key,
+  value: Lang[key as keyof typeof Lang],
+}));
+
