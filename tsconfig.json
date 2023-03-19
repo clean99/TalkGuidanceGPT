@@ -10,6 +10,10 @@
         "target": "es5",
         "allowJs": true,
         "jsx": "react",
+        "lib": [
+            "es2018",
+            "DOM"
+        ],
     },
     "include": [
         "./src/**/*",

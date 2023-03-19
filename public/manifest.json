@@ -1,9 +1,12 @@
 {
   "manifest_version": 3,
-  "name": "SpeakToWebsite",
+  "name": "TalkGuidanceGPT",
   "version": "1.0",
   "description": "Browse and interact with websites using your voice! SpeakToWebsite assists visually impaired users by providing audio feedback and enabling them to control websites through natural language commands.",
-  "action": {},
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "TalkGuidanceGPT"
+  },
   "permissions": [
     "storage",
     "tts",
@@ -17,5 +20,11 @@
   "host_permissions": ["https://*/*"],
   "background": {
     "service_worker": "background.js"
+  },
+  "icons": {
+    "16": "icon16.png",
+    "32": "icon32.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
   }
 }
