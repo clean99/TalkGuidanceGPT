@@ -1,7 +1,7 @@
 // Import necessary libraries and dependencies
 import { PrunedElement } from '../../types/interface';
 import * as $ from 'jquery';
-import { addAria, addContent, addRole, addSelector } from '../prunedDOM';
+import { addAria, addContent, addRole, addSelector, addState } from '../prunedDOM';
 
 // Test cases for addRole function
 describe('addRole', () => {
@@ -230,5 +230,71 @@ describe('addSelector', () => {
     expect(res.class).toBe('test-class');
     expect(res.id).toBe('test-id');
     expect(res.tagName).toBe('div');
+  });
+});
+
+// Test cases for addState function
+describe('addState', () => {
+  test('should add disabled, checked, and selected states to the result object when all are present', () => {
+    const el = document.createElement('input');
+    el.disabled = true;
+    el.checked = true;
+    // @ts-ignore
+    el.selected = true;
+    const res: PrunedElement = {};
+
+    addState(el, res);
+
+    expect(res.disabled).toBe(true);
+    expect(res.checked).toBe(true);
+    expect(res.selected).toBe(true);
+  });
+
+  test('should add only disabled state to the result object when others are absent', () => {
+    const el = document.createElement('input');
+    el.disabled = true;
+    const res: PrunedElement = {};
+
+    addState(el, res);
+
+    expect(res.disabled).toBe(true);
+    expect(res.checked).toBeUndefined();
+    expect(res.selected).toBeUndefined();
+  });
+
+  test('should add only checked state to the result object when others are absent', () => {
+    const el = document.createElement('input');
+    el.checked = true;
+    const res: PrunedElement = {};
+
+    addState(el, res);
+
+    expect(res.disabled).toBeUndefined();
+    expect(res.checked).toBe(true);
+    expect(res.selected).toBeUndefined();
+  });
+
+  test('should add only selected state to the result object when others are absent', () => {
+    const el = document.createElement('input');
+    // @ts-ignore
+    el.selected = true;
+    const res: PrunedElement = {};
+
+    addState(el, res);
+
+    expect(res.disabled).toBeUndefined();
+    expect(res.checked).toBeUndefined();
+    expect(res.selected).toBe(true);
+  });
+
+  test('should not add any state to the result object when all are absent', () => {
+    const el = document.createElement('input');
+    const res: PrunedElement = {};
+
+    addState(el, res);
+
+    expect(res.disabled).toBeUndefined();
+    expect(res.checked).toBeUndefined();
+    expect(res.selected).toBeUndefined();
   });
 });

@@ -78,7 +78,24 @@ const addSelector = (el: HTMLElement, res: PrunedElement): void => {
   res.tagName = tagName
 }
 
+const addState = (el: HTMLElement, res: PrunedElement): void => {
+  const $el = $(el) // Cache the jQuery object for better performance
+  const disabled = $el.prop('disabled') // Use jQuery's prop method to get the disabled state
+  const checked = $el.prop('checked') // Use jQuery's prop method to get the checked state
+  const selected = $el.prop('selected') // Use jQuery's prop method to get the selected state
 
+  if (disabled) {
+    res.disabled = disabled
+  }
+
+  if (checked) {
+    res.checked = checked
+  }
+
+  if (selected) {
+    res.selected = selected
+  }
+}
 
 const mapDOM = (_: number, el: HTMLElement): PrunedElement => {
   const res: PrunedElement = {}
@@ -88,9 +105,10 @@ const mapDOM = (_: number, el: HTMLElement): PrunedElement => {
   addContent($el, res)
   addAria($el, res)
   addSelector(el, res)
+  addState(el, res)
 
   return res
 }
 
 
-export { mapDOM, addRole, addContent, addSelector, addAria }
+export { mapDOM, addRole, addContent, addSelector, addAria, addState }

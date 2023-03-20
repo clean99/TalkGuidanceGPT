@@ -22,7 +22,6 @@ export interface ProcessedAction {
 }
 
 export interface PrunedElement {
-  // TODO: support img
   role?: string
   type?: string
   placeholder?: string
@@ -36,6 +35,9 @@ export interface PrunedElement {
   id?: string
   class?: string
   tagName?: string
+  disabled?: boolean
+  checked?: boolean
+  selected?: boolean
 }
 
 export enum Lang {
