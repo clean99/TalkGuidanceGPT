@@ -1,34 +1,22 @@
-import * as $ from 'jquery'
 import * as _ from 'lodash'
-import listener from './dom/listener'
+import { registerVoiceInstructions } from './dom/domEventListener'
 import { getEnabled } from './storage'
+import { report } from './report'
 
-async function executeScript() {
-  const { tabListener } = await listener()
-  // call when extension onload
-  $.when($.ready).then( () => {
-    // @ts-ignore
-    document.addEventListener('keydown', tabListener)
-  })
-
-  return () => {
-    document.removeEventListener('keydown', tabListener)
-  }
-}
-
-let removeEventListener: any
+let destroy: any
 
 (async () => {
-  if(await getEnabled() && !removeEventListener) {
-    removeEventListener = await executeScript()
+  if(await getEnabled() && !destroy) {
+    destroy = await registerVoiceInstructions(window, report)
   }
 })()
 
 chrome.runtime.onMessage.addListener(async (message, sender, sendResponse) => {
-  if (message.action === 'enable' && !removeEventListener) {
-    removeEventListener = await executeScript()
-  } else if (message.action === 'disable' && removeEventListener) {
-    removeEventListener()
-    removeEventListener = null
+  if (message.action === 'enable' && !destroy) {
+    destroy = await registerVoiceInstructions(window, report)
+  } else if (message.action === 'disable' && destroy) {
+    destroy()
+    destroy = null
   }
 });
+

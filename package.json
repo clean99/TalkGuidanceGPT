@@ -9,8 +9,8 @@
     "build": "webpack",
     "start": "webpack --watch"
   },
-  "keywords": [],
-  "license": "ISC",
+  "keywords": ["gpt", "screen reader", "web accessibility", "web", "chatgpt"],
+  "license": "Creative Commons Attribution-NonCommercial 3.0 Singapore License",
   "devDependencies": {
     "@types/jest": "^29.5.0",
     "@testing-library/dom": "^9.0.1",

@@ -16,10 +16,8 @@
     "webRequest",
     "webNavigation",
     "activeTab",
-    "tabs",
-    "scripting"
+    "tabs"
   ],
-  "host_permissions": ["https://*/*"],
   "background": {
     "service_worker": "background.js"
   },

@@ -14,7 +14,7 @@ TalkGuidance GPT is a Chrome extension designed to make web browsing more access
 
 ## 🛠️ Installation
 
-1. Download the TalkGuidance GPT Chrome extension from the Chrome Web Store (link to your extension).
+1. Download the TalkGuidance GPT Chrome extension from the Chrome Web Store.
 2. Click "Add to Chrome" to install the extension on your browser.
 3. Once installed, you will see the TalkGuidance GPT icon in the top-right corner of your browser.
 

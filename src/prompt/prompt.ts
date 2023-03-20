@@ -28,6 +28,7 @@ const prompts = async (lang: Lang): Promise<{
   promptSpeak: (text: string, actionLists: Actions) => Promise<ProcessedAction | null>
   promptRead: (prunedDom: PrunedElement[]) => Promise<string>
   introduceElement: (prunedDom: PrunedElement) => Promise<string>
+  translator: (text: string) => Promise<string>
 }> => {
   const prompt = await promptFactory()
   //   const promptKit = await gptPromptKitFactory(await getStorage('gpt-api-key'));
@@ -40,7 +41,7 @@ const prompts = async (lang: Lang): Promise<{
   }
   const translator = lang === Lang.UnitedKingdom
     ? translate(langName, getLangFullName(Lang.UnitedKingdom))
-    : (text: string) => text
+    : (text: string) => Promise.resolve(text)
 
   /**
      *
@@ -93,7 +94,7 @@ const prompts = async (lang: Lang): Promise<{
     You are an assistant of a visually impaired user.\n
     You are only allowed to use ${langName} to reply. You must make sure the reply text
     doesn't contain any other language words.\n
-    Given a DOM element, introduce it in a way that is easy for user to understand its content and how to interact with it, flawlessly.\n
+    Given a DOM element, try to understand the meaning of it and introduce it in a way that is easy for user to understand its content and how to interact with it, flawlessly.\n
     Don't use technical terms(like DOM), use plain ${langName}, you are introducing the element to a user who doesn't know anything about the web.
     Please make the content as concise as possible.\n
     DOM element: ${JSON.stringify(prunedDom)}
@@ -104,7 +105,7 @@ const prompts = async (lang: Lang): Promise<{
     return response
   }
 
-  return { promptSpeak, promptRead, introduceElement }
+  return { promptSpeak, promptRead, introduceElement, translator }
 }
 
 export { promptFactory, prompts }

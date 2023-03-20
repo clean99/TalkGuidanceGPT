@@ -92,3 +92,10 @@ export const langArray = Object.keys(Lang).map((key) => ({
   value: Lang[key as keyof typeof Lang],
 }));
 
+export enum ReportType {
+  NOTIFICATION = 'notification',
+  PAGE_CHANGE = 'page change',
+  PAGE_LOAD = 'page load',
+  PAGE_FAIL = 'page fail',
+  TAB = 'tab',
+}
