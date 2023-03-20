@@ -44,7 +44,6 @@ export enum Lang {
   UnitedKingdom = 'en-GB',
   China = 'zh-CN',
   HongKong = 'zh-HK',
-  UnitedStates = 'en-US',
   Italy = 'it-IT',
   Sweden = 'sv-SE',
   Canada = 'fr-CA',

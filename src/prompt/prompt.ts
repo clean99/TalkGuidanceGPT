@@ -38,8 +38,8 @@ const prompts = async (lang: Lang): Promise<{
                 The masterful ${from} translator flawlessly translates the phrase into ${to}:`)
     }
   }
-  const translator = lang === Lang.UnitedStates
-    ? translate(langName, getLangFullName(Lang.UnitedStates))
+  const translator = lang === Lang.UnitedKingdom
+    ? translate(langName, getLangFullName(Lang.UnitedKingdom))
     : (text: string) => text
 
   /**
@@ -95,7 +95,7 @@ const prompts = async (lang: Lang): Promise<{
     doesn't contain any other language words.\n
     Given a DOM element, introduce it in a way that is easy for user to understand its content and how to interact with it, flawlessly.\n
     Don't use technical terms(like DOM), use plain ${langName}, you are introducing the element to a user who doesn't know anything about the web.
-
+    Please make the content as concise as possible.\n
     DOM element: ${JSON.stringify(prunedDom)}
 
     Begin.

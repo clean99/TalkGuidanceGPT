@@ -5,7 +5,7 @@ import { getTabId } from './utils/utils'
 
 // call when extension onload
 chrome.runtime.onInstalled.addListener(async () => {
-  await setLang(Lang.China)
+  await setLang(Lang.UnitedKingdom)
   await setRate(0.8)
   await setEnabled(true)
 })

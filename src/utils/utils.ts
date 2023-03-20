@@ -48,8 +48,6 @@ export function getLangFullName (lang: Lang): string {
       return 'Chinese (Simplified)'
     case Lang.UnitedKingdom:
       return 'English (United Kingdom)'
-    case Lang.UnitedStates:
-      return 'English (United States)'
     case Lang.Italy:
       return 'Italian (Italy)'
     case Lang.Sweden:

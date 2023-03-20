@@ -6,7 +6,7 @@ import { getTabId } from './utils/utils';
 
 const App: React.FC = () => {
   const [apiKey, setApiKeyLocal] = React.useState<string>('');
-  const [lang, setLangLocal] = React.useState<Lang>(Lang.UnitedStates);
+  const [lang, setLangLocal] = React.useState<Lang>(Lang.UnitedKingdom);
   const [rate, setRateLocal] = React.useState<number>(0);
   const [enabled, setEnabledLocal] = React.useState(false);
 

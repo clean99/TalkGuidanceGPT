@@ -4,19 +4,15 @@ import listener from './dom/listener'
 import { getEnabled } from './storage'
 
 async function executeScript() {
-  const { tabListener, clickListener } = await listener()
+  const { tabListener } = await listener()
   // call when extension onload
   $.when($.ready).then( () => {
     // @ts-ignore
     document.addEventListener('keydown', tabListener)
-    // call when user click on the page
-    document.addEventListener('click', clickListener)
   })
 
   return () => {
     document.removeEventListener('keydown', tabListener)
-    // call when user click on the page
-    document.removeEventListener('click', clickListener)
   }
 }
 
