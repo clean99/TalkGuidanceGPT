@@ -72,3 +72,7 @@ And more!
 We're always looking to improve TalkGuidance GPT. If you have any suggestions, feedback, or need assistance, please don't hesitate to contact us at xff9924@email.com.
 
 Happy browsing! 🌍
+
+## 📄 License
+
+<a rel="license" href="http://creativecommons.org/licenses/by-nc/3.0/sg/"><img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/3.0/sg/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/3.0/sg/">Creative Commons Attribution-NonCommercial 3.0 Singapore License</a>.
