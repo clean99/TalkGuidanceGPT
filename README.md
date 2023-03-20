@@ -8,6 +8,9 @@ TalkGuidance GPT is a Chrome extension designed to make web browsing more access
 - Customizable language settings
 - Adjustable speech rate
 - Easy-to-use interface
+- No data collection
+- Free to use
+- Voice Control (coming soon!)
 
 ## 🛠️ Installation
 
@@ -19,9 +22,9 @@ TalkGuidance GPT is a Chrome extension designed to make web browsing more access
 
 To customize your TalkGuidance GPT experience, follow these steps:
 
-1. Click on the TalkGuidance GPT icon in the top-right corner of your browser.
+1. Click on the TalkGuidance GPT icon in the top-right corner of your browser(in the extension icon).
 2. In the extension popup, you can configure the following settings:
-3. GPT_API_KEY: Enter your GPT API key.
+3. API Key: Enter your GPT API key.
 4. Language: Select your preferred language from the dropdown list.
 5. Speed Rate: Adjust the speech rate using the input field (range: 0 to 1, in increments of 0.01).
 6. Click "Save" to apply your changes.
@@ -30,9 +33,9 @@ To customize your TalkGuidance GPT experience, follow these steps:
 
 To use TalkGuidance GPT, you'll need a GPT API key. Follow these steps to get one:
 
-1. Visit OpenAI's website and sign up for an account.
-2. After signing up, navigate to the API section or visit this page to request API access.
-3. Once approved, you will receive your GPT API key. Copy the key and paste it into the appropriate field in the TalkGuidance GPT settings.
+1. Visit OpenAI's website and sign up for an account.[Login/Sign in to OpenAI](https://auth0.openai.com/u/login)
+2. After signing up, navigate to the API section or visit this page to request API access.[Create API key](https://platform.openai.com/account/api-keys)
+3. Once you have your API key, enter it in the extension popup, and click save. You're all set!
 
 ## 📖 Usage
 
@@ -66,6 +69,6 @@ And more!
 
 ## 💡 Feedback and Support
 
-We're always looking to improve TalkGuidance GPT. If you have any suggestions, feedback, or need assistance, please don't hesitate to contact us at support@example.com.
+We're always looking to improve TalkGuidance GPT. If you have any suggestions, feedback, or need assistance, please don't hesitate to contact us at xff9924@email.com.
 
 Happy browsing! 🌍

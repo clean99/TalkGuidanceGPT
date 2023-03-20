@@ -2,7 +2,10 @@
   "manifest_version": 3,
   "name": "TalkGuidanceGPT",
   "version": "1.0",
-  "description": "TalkGuidance GPT is a Chrome extension designed to make web browsing more accessible for visually impaired users. By utilizing GPT technology, this extension intelligently analyzes DOM elements and provides detailed information about them when users navigate using the Tab key. This innovative solution enables a more inclusive browsing experience, allowing blind users to better understand the purpose and function of website elements.",
+  "author": "Koh Hom",
+  "homepage_url": "clean99.github.io",
+  "short_name": "TalkGuidance",
+  "description": "TalkGuidance GPT is a Chrome extension that enhances web accessibility for visually impaired users by integrating a GPT-powered screen reader. It intelligently analyzes website elements as users navigate with the Tab key, offering detailed information and fostering an inclusive browsing experience.",
   "action": {
     "default_popup": "popup.html",
     "default_title": "TalkGuidanceGPT"
