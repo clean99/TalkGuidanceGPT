@@ -2,16 +2,9 @@ import { PrunedElement } from '../types/interface'
 import { pruneSpace } from '../utils/utils'
 import * as $ from 'jquery'
 
-const mapDOM = (_: number, el: HTMLElement): PrunedElement => {
-  const res: PrunedElement = {}
-  const $el = $(el) // Cache the jQuery object for better performance
+const addRole = ($el: JQuery<HTMLElement>, res: PrunedElement): void => {
   const prunedRole = pruneSpace($el.attr('role') ?? '')
   const prunedType = pruneSpace($el.attr('type') ?? '')
-  const prunedPlaceholder = pruneSpace($el.attr('placeholder') ?? '')
-  // @ts-ignore
-  const prunedName = pruneSpace($el.text().trim() || el.innerText || '')
-  const prunedAlt = pruneSpace($el.attr('alt') ?? '') // Use jQuery's attr method to get the alt attribute
-  const prunedTitle = pruneSpace($el.attr('title') ?? '') // Use jQuery's attr method to get the title attribute
 
   if (prunedRole) {
     res.role = prunedRole
@@ -20,6 +13,13 @@ const mapDOM = (_: number, el: HTMLElement): PrunedElement => {
   if (prunedType) {
     res.type = prunedType
   }
+}
+
+const addContent = ($el: JQuery<HTMLElement>, res: PrunedElement): void => {
+  const prunedPlaceholder = pruneSpace($el.attr('placeholder') ?? '')
+  const prunedName = pruneSpace($el.text().trim() || $el[0].innerText || '')
+  const prunedAlt = pruneSpace($el.attr('alt') ?? '')
+  const prunedTitle = pruneSpace($el.attr('title') ?? '')
 
   if (prunedPlaceholder) {
     res.placeholder = prunedPlaceholder
@@ -36,9 +36,61 @@ const mapDOM = (_: number, el: HTMLElement): PrunedElement => {
   if (prunedTitle) {
     res.title = prunedTitle
   }
+}
+
+const addAria = ($el: JQuery<HTMLElement>, res: PrunedElement): void => {
+  const prunedAriaLabel = pruneSpace($el.attr('aria-label') ?? '') // Use jQuery's attr method to get the aria-label attribute
+  const prunedAriaLabelledBy = pruneSpace($el.attr('aria-labelledby') ?? '') // Use jQuery's attr method to get the aria-labelledby attribute
+  const prunedAriaDescribedBy = pruneSpace($el.attr('aria-describedby') ?? '') // Use jQuery's attr method to get the aria-describedby attribute
+  const prunedAriaDescription = pruneSpace($el.attr('aria-description') ?? '') // Use jQuery's attr method to get the aria-description attribute
+
+  if (prunedAriaLabel) {
+    res.ariaLabel = prunedAriaLabel
+  }
+
+  if (prunedAriaLabelledBy) {
+    res.ariaLabelledBy = prunedAriaLabelledBy
+  }
+
+  if (prunedAriaDescribedBy) {
+    res.ariaDescribedBy = prunedAriaDescribedBy
+  }
+
+  if (prunedAriaDescription) {
+    res.ariaDescription = prunedAriaDescription
+  }
+}
+
+const addSelector = (el: HTMLElement, res: PrunedElement): void => {
+  const $el = $(el) // Cache the jQuery object for better performance
+  const prunedClass = pruneSpace($el.attr('class') ?? '') // Use jQuery's attr method to get the class attribute
+  const prunedId = pruneSpace($el.attr('id') ?? '') // Use jQuery's attr method to get the id attribute
+  const tagName = el.tagName.toLowerCase() || el.nodeName.toLowerCase()
+
+  if (prunedClass) {
+    res.class = prunedClass
+  }
+
+  if (prunedId) {
+    res.id = prunedId
+  }
+
+  res.tagName = tagName
+}
+
+
+
+const mapDOM = (_: number, el: HTMLElement): PrunedElement => {
+  const res: PrunedElement = {}
+  const $el = $(el) // Cache the jQuery object for better performance
+  
+  addRole($el, res)
+  addContent($el, res)
+  addAria($el, res)
+  addSelector(el, res)
 
   return res
 }
 
 
-export { mapDOM }
+export { mapDOM, addRole, addContent, addSelector, addAria }

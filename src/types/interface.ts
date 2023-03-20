@@ -29,6 +29,13 @@ export interface PrunedElement {
   name?: string
   alt?: string
   title?: string
+  ariaLabel?: string
+  ariaLabelledBy?: string
+  ariaDescribedBy?: string
+  ariaDescription?: string
+  id?: string
+  class?: string
+  tagName?: string
 }
 
 export enum Lang {
