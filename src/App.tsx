@@ -1,34 +1,52 @@
 import * as React from 'react';
 import './App.css';
-import { getLang, getGPTApiKey, getRate, setGPTApiKey, setLang, setRate } from './storage';
+import { getLang, getGPTApiKey, getRate, setGPTApiKey, setLang, setRate, getEnabled, setEnabled } from './storage';
 import { Lang, langArray } from './types/interface';
+import { getTabId } from './utils/utils';
 
 const App: React.FC = () => {
   const [apiKey, setApiKeyLocal] = React.useState<string>('');
   const [lang, setLangLocal] = React.useState<Lang>(Lang.UnitedStates);
   const [rate, setRateLocal] = React.useState<number>(0);
+  const [enabled, setEnabledLocal] = React.useState(false);
+
+  const handleToggle = () => {
+    const newState = !enabled;
+    setEnabledLocal(newState);
+    if (newState) {
+      setEnabledLocal(true);
+    } else {
+      setEnabledLocal(false);
+    }
+  };
 
   React.useEffect(() => {
     async function fetchDefaults() {
       const fetchedLang = await getLang();
       const fetchedApiKey = await getGPTApiKey();
       const fetchedRate = await getRate();
+      const fetchedEnabled = await getEnabled();
 
       setLangLocal(fetchedLang);
       setApiKeyLocal(fetchedApiKey);
       setRateLocal(fetchedRate);
+      setEnabledLocal(fetchedEnabled);
     }
 
     fetchDefaults();
   }, [getLang, getGPTApiKey, getRate]);
 
-  const handleSave = () => {
+  const handleClose = () => {
+    window.close();
+  };
+
+  const handleSave = async () => {
     setLang(lang);
     setGPTApiKey(apiKey);
     setRate(rate);
-  };
-  const handleClose = () => {
-    window.close();
+    setEnabled(enabled);
+    chrome.tabs.sendMessage(await getTabId(), { action: enabled ? 'enable' : 'disable' });
+    handleClose();
   };
 
   return (
@@ -40,7 +58,7 @@ const App: React.FC = () => {
           type="text"
           id="api-key"
           value={apiKey}
-          placeholder="Input your openai API Key"
+          placeholder="Enter your openai API Key"
           // @ts-ignore
           onChange={(e) => setApiKeyLocal(e.target.value)}
         />
@@ -72,9 +90,21 @@ const App: React.FC = () => {
           onChange={(e) => setRateLocal(parseFloat(e.target.value))}
         />
       </div>
+      <div className='toggle-item'>
+      <label htmlFor="toggle">Status:</label>
+      <div className="toggle-container">
+        <input
+          type="checkbox"
+          id="toggle"
+          checked={enabled}
+          onChange={handleToggle}
+        />
+        <label htmlFor="toggle" className="toggle-switch"></label>
+      </div>
+      </div>
       <div className="buttons">
-        <button className="button save-button" onClick={handleSave}>Save</button>
         <button className="button close-button" onClick={handleClose}>Close</button>
+        <button className="button save-button" onClick={handleSave}>Save</button>
       </div>
     </div>
   );

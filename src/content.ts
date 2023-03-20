@@ -1,22 +1,38 @@
 import * as $ from 'jquery'
 import * as _ from 'lodash'
-import { getPrunedFocusDOM } from './dom/getFocusDOM'
-import { prompts } from './prompt/prompt'
-import { getLang } from './storage'
+import listener from './dom/listener'
+import { getEnabled } from './storage'
 
-// call when extension onload
-$.when($.ready).then(async () => {
-  // @ts-ignore
-  document.addEventListener('keydown', _.debounce(async function (event) {
-    const { introduceElement } = await prompts(await getLang())
-    if (event.key === 'Tab') {
-      const focusEl = getPrunedFocusDOM(document)
-      if (focusEl) {
-        const introduceEl = await introduceElement(focusEl)
-        chrome.runtime.sendMessage({
-          message: introduceEl
-        })
-      }
-    }
-  }, 1000))
-})
+async function executeScript() {
+  const { tabListener, clickListener } = await listener()
+  // call when extension onload
+  $.when($.ready).then( () => {
+    // @ts-ignore
+    document.addEventListener('keydown', tabListener)
+    // call when user click on the page
+    document.addEventListener('click', clickListener)
+  })
+
+  return () => {
+    document.removeEventListener('keydown', tabListener)
+    // call when user click on the page
+    document.removeEventListener('click', clickListener)
+  }
+}
+
+let removeEventListener: any
+
+(async () => {
+  if(await getEnabled() && !removeEventListener) {
+    removeEventListener = await executeScript()
+  }
+})()
+
+chrome.runtime.onMessage.addListener(async (message, sender, sendResponse) => {
+  if (message.action === 'enable' && !removeEventListener) {
+    removeEventListener = await executeScript()
+  } else if (message.action === 'disable' && removeEventListener) {
+    removeEventListener()
+    removeEventListener = null
+  }
+});

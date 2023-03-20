@@ -63,4 +63,12 @@ async function getRate (): Promise<number> {
   return await getStorage('rate')
 }
 
-export { getStorage, setStorage, clearStorage, getGPTApiKey, setGPTApiKey, getLang, setLang, setRate, getRate }
+async function setEnabled (enabled: boolean): Promise<void> {
+  await setStorage('enabled', enabled)
+}
+
+async function getEnabled (): Promise<boolean> {
+  return await getStorage('enabled')
+}
+
+export { getStorage, setStorage, clearStorage, getGPTApiKey, setGPTApiKey, getLang, setLang, setRate, getRate, setEnabled, getEnabled }

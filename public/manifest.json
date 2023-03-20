@@ -3,9 +3,8 @@
   "name": "TalkGuidanceGPT",
   "version": "1.0",
   "author": "Koh Hom",
-  "homepage_url": "clean99.github.io",
   "short_name": "TalkGuidance",
-  "description": "TalkGuidance GPT is a Chrome extension that enhances web accessibility for visually impaired users by integrating a GPT-powered screen reader. It intelligently analyzes website elements as users navigate with the Tab key, offering detailed information and fostering an inclusive browsing experience.",
+  "description": "TalkGuidance is a screen reader powered by GPT, which designed to make web browsing more accessible for visually impaired users.",
   "action": {
     "default_popup": "popup.html",
     "default_title": "TalkGuidanceGPT"
@@ -29,5 +28,11 @@
     "32": "icon32.png",
     "48": "icon48.png",
     "128": "icon128.png"
-  }
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://*/*", "http://*/*"],
+      "js": ["content.js"]
+    }
+  ]
 }
