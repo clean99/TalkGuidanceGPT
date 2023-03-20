@@ -93,10 +93,12 @@ const prompts = async (lang: Lang): Promise<{
     You are only allowed to use ${langName} to reply. You must make sure the reply text
     doesn't contain any other language.
 
-    Given a pruned DOM element, introduce it in a way that is easy for humans to understand its content,
+    Given a DOM element, introduce it in a way that is easy for people to understand its content,
     with possible actions that can be done to the element, flawlessly.
 
-    Pruned DOM element: ${JSON.stringify(prunedDom)}
+    Don't use technical terms(like DOM), use plain ${langName}
+
+    DOM element: ${JSON.stringify(prunedDom)}
 
     Begin.
   `)

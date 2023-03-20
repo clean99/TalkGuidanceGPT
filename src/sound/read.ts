@@ -10,14 +10,12 @@ function createTextToSpeechFunction (lang: string, rate: number) {
       lang,
       rate,
       onEvent: function (event: any) {
-        console.log('Event ' + String(event.type) + ' at position ' + String(event.charIndex))
         if (event.type === 'end' || event.type === 'interrupted' || event.type === 'cancelled') {
           finishedPromiseResolve?.()
         }
       }
     }
-    console.log('Reading text: ' + JSON.stringify(text))
-    console.log('Options: ' + JSON.stringify(options))
+
     chrome.tts.speak(text, options)
 
     // return when the text is finished being read

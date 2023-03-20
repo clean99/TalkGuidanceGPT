@@ -12,8 +12,6 @@ $.when($.ready).then(async () => {
     if (event.key === 'Tab') {
       const focusEl = getPrunedFocusDOM(document)
       if (focusEl) {
-        console.log('focusEl', focusEl)
-        console.log('id', chrome.runtime?.id)
         const introduceEl = await introduceElement(focusEl)
         chrome.runtime.sendMessage({
           message: introduceEl

@@ -7,8 +7,6 @@ async function insertScript (): Promise<void> {
   const tabId = await getTabId()
   // url not chrome://
   const url = await getTabUrl()
-  console.log('tabId', tabId)
-  console.log('url', url)
   if (!url || url.startsWith('chrome://')) {
     // Skip actions that require access to chrome:// URLs
     return
@@ -29,11 +27,10 @@ chrome.tabs.onUpdated.addListener(insertScript)
 chrome.runtime.onInstalled.addListener(async () => {
   await setLang(Lang.China)
   await setRate(0.8)
-  await setGPTApiKey('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')
+  await setGPTApiKey('')
 })
 
 chrome.runtime.onMessage.addListener(async function (request: any, sender: chrome.runtime.MessageSender) {
-  console.log(request.message, sender.tab?.id)
   const textToSpeech = createTextToSpeechFunction(await getLang(), await getRate())
   await textToSpeech(request.message)
   chrome.tabs.sendMessage(sender.tab?.id ?? 0, {

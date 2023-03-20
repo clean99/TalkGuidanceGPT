@@ -173,25 +173,21 @@ describe('addAria', () => {
 describe('addSelector', () => {
   test('should add class, id, and tagName to the result object when all are present', () => {
     const el = document.createElement('div');
-    el.className = 'test-class';
     el.id = 'test-id';
     const res: PrunedElement = {};
 
     addSelector(el, res);
 
-    expect(res.class).toBe('test-class');
     expect(res.id).toBe('test-id');
     expect(res.tagName).toBe('div');
   });
 
   test('should add only class and tagName to the result object when id is absent', () => {
     const el = document.createElement('div');
-    el.className = 'test-class';
     const res: PrunedElement = {};
 
     addSelector(el, res);
 
-    expect(res.class).toBe('test-class');
     expect(res.id).toBeUndefined();
     expect(res.tagName).toBe('div');
   });
@@ -203,7 +199,6 @@ describe('addSelector', () => {
 
     addSelector(el, res);
 
-    expect(res.class).toBeUndefined();
     expect(res.id).toBe('test-id');
     expect(res.tagName).toBe('div');
   });
@@ -214,20 +209,17 @@ describe('addSelector', () => {
 
     addSelector(el, res);
 
-    expect(res.class).toBeUndefined();
     expect(res.id).toBeUndefined();
     expect(res.tagName).toBe('div');
   });
 
   test('should handle whitespace in class and id attributes', () => {
     const el = document.createElement('div');
-    el.className = ' test-class ';
     el.id = ' test-id ';
     const res: PrunedElement = {};
 
     addSelector(el, res);
 
-    expect(res.class).toBe('test-class');
     expect(res.id).toBe('test-id');
     expect(res.tagName).toBe('div');
   });

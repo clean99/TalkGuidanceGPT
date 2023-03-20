@@ -40,6 +40,7 @@ const App: React.FC = () => {
           type="text"
           id="api-key"
           value={apiKey}
+          placeholder="Input your openai API Key"
           // @ts-ignore
           onChange={(e) => setApiKeyLocal(e.target.value)}
         />

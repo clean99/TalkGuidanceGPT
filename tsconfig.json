@@ -12,11 +12,15 @@
         "jsx": "react",
         "lib": [
             "es2018",
-            "DOM"
+            "DOM",
         ],
     },
     "include": [
         "./src/**/*",
         "src/custom.d.ts"
+    ],
+    "exclude": [
+        "node_modules",
+        "dist"
     ]
 }

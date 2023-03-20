@@ -63,13 +63,8 @@ const addAria = ($el: JQuery<HTMLElement>, res: PrunedElement): void => {
 
 const addSelector = (el: HTMLElement, res: PrunedElement): void => {
   const $el = $(el) // Cache the jQuery object for better performance
-  const prunedClass = pruneSpace($el.attr('class') ?? '') // Use jQuery's attr method to get the class attribute
   const prunedId = pruneSpace($el.attr('id') ?? '') // Use jQuery's attr method to get the id attribute
   const tagName = el.tagName.toLowerCase() || el.nodeName.toLowerCase()
-
-  if (prunedClass) {
-    res.class = prunedClass
-  }
 
   if (prunedId) {
     res.id = prunedId
