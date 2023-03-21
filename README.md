@@ -5,6 +5,7 @@ TalkGuidance GPT is a Chrome extension designed to make web browsing more access
 ## 🎯 Features
 
 - GPT-powered analysis of DOM elements
+- Analyzes the DOM and context to describe elements
 - Customizable language settings
 - Adjustable speech rate
 - Easy-to-use interface

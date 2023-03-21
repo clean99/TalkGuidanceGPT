@@ -39,8 +39,9 @@ const prompts = async (lang: Lang): Promise<{
                 The masterful ${from} translator flawlessly translates the phrase into ${to}:`)
     }
   }
-  const translator = lang === Lang.UnitedKingdom
-    ? translate(langName, getLangFullName(Lang.UnitedKingdom))
+
+  const translator = lang !== Lang.UnitedKingdom
+    ? translate(getLangFullName(Lang.UnitedKingdom), langName)
     : (text: string) => Promise.resolve(text)
 
   /**
