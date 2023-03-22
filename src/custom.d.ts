@@ -1,6 +1,6 @@
-declare module "*.svg" {
+declare module '*.svg' {
     const content: any;
     export default content;
   }
 // global document
-declare var document: Document;
+declare let document: Document;
