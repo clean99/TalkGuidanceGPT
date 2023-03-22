@@ -1,12 +1,14 @@
 import * as React from 'react';
 import './App.css';
+import { i18n, I18NMap, install } from './i18n/i18n';
+import { chineseTranslations, englishTranslations, japaneseTranslations, spanishTranslations } from './i18n/translation';
 import { getLang, getGPTApiKey, getRate, setGPTApiKey, setLang, setRate, getEnabled, setEnabled } from './storage';
 import { Lang, langArray } from './types/interface';
 import { getTabId } from './utils/utils';
 
 const App: React.FC = () => {
   const [apiKey, setApiKeyLocal] = React.useState<string>('');
-  const [lang, setLangLocal] = React.useState<Lang>(Lang.UnitedKingdom);
+  const [lang, setLangLocal] = React.useState<Lang>(Lang.English);
   const [rate, setRateLocal] = React.useState<number>(0);
   const [enabled, setEnabledLocal] = React.useState(false);
 
@@ -19,6 +21,14 @@ const App: React.FC = () => {
       setEnabledLocal(false);
     }
   };
+
+  React.useEffect(() => {
+    install(Lang.English, englishTranslations, I18NMap);
+    install(Lang.Chinese, chineseTranslations, I18NMap);
+    install(Lang.Japan, japaneseTranslations, I18NMap);
+    install(Lang.Spain, spanishTranslations, I18NMap);
+    install(Lang.Cantonese, chineseTranslations, I18NMap);
+  }, [])
 
   React.useEffect(() => {
     async function fetchDefaults() {
@@ -48,12 +58,14 @@ const App: React.FC = () => {
     chrome.tabs.sendMessage(await getTabId(), { action: enabled ? 'enable' : 'disable' });
     handleClose();
   };
-
   return (
     <div className="talk-guidance-gpt">
-      <h1>TalkGuidanceGPT</h1>
+      <h1>{i18n('ui_title', lang)}</h1>
+      <div className='link'>
+        {i18n('ui_link_label', lang)} <a href="https://github.com/clean99/TalkGuidanceGPT" target="_blank" rel="noopener noreferrer">{i18n('ui_link_title', lang)}</a>
+      </div>
       <div className="input-group">
-        <label htmlFor="api-key">API Key:</label>
+        <label htmlFor="api-key">{i18n('ui_apikey_label', lang)}</label>
         <input
           type="text"
           id="api-key"
@@ -64,7 +76,7 @@ const App: React.FC = () => {
         />
       </div>
       <div className="input-group">
-        <label htmlFor="lang">Language:</label>
+        <label htmlFor="lang">{i18n('ui_lang_label', lang)}</label>
         <select
           id="lang"
           value={lang}
@@ -79,7 +91,7 @@ const App: React.FC = () => {
         </select>
       </div>
       <div className="input-group">
-        <label htmlFor="rate">Rate:</label>
+        <label htmlFor="rate">{i18n('ui_rate_label', lang)}</label>
         <input
           type="number"
           id="rate"
@@ -91,7 +103,7 @@ const App: React.FC = () => {
         />
       </div>
       <div className='toggle-item'>
-      <label htmlFor="toggle">Status:</label>
+      <label htmlFor="toggle">{i18n('ui_status', lang)}</label>
       <div className="toggle-container">
         <input
           type="checkbox"
@@ -103,8 +115,8 @@ const App: React.FC = () => {
       </div>
       </div>
       <div className="buttons">
-        <button className="button close-button" onClick={handleClose}>Close</button>
-        <button className="button save-button" onClick={handleSave}>Save</button>
+        <button className="button close-button" onClick={handleClose}>{i18n('ui_close', lang)}</button>
+        <button className="button save-button" onClick={handleSave}>{i18n('ui_save', lang)}</button>
       </div>
     </div>
   );

@@ -40,8 +40,8 @@ const prompts = async (lang: Lang): Promise<{
     }
   }
 
-  const translator = lang !== Lang.UnitedKingdom
-    ? translate(getLangFullName(Lang.UnitedKingdom), langName)
+  const translator = lang !== Lang.English
+    ? translate(getLangFullName(Lang.English), langName)
     : (text: string) => Promise.resolve(text)
 
   /**

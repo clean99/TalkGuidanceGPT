@@ -127,3 +127,28 @@ input[type="checkbox"] {
   font-size: 16px;
   color: #333;
 }
+
+.link {
+  font-size: 16px;
+  margin-bottom: 10px;
+  color: #000000; /* black text */
+}
+
+a {
+  color: #000000; /* black text */
+  text-decoration: none; /* remove underline */
+  font-weight: bold; /* make the text bold */
+  transition: all 0.3s ease-in-out; /* add smooth hover transition */
+}
+
+a:visited {
+  color: #000000; /* black text */
+}
+
+a:hover {
+  color: #ffffff; /* white text on hover */
+  background-color: #000000; /* black background on hover */
+  padding: 0.3em 0.5em; /* add some padding to the link */
+  border-radius: 0.2em; /* round the corners */
+}
+

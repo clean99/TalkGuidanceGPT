@@ -42,18 +42,16 @@ export const getCodeBlock = (text: string): string | null =>
 
 export function getLangFullName (lang: Lang): string {
   switch (lang) {
-    case Lang.HongKong:
+    case Lang.Cantonese:
       return 'Cantonese'
-    case Lang.China:
+    case Lang.Chinese:
       return 'Chinese (Simplified)'
-    case Lang.UnitedKingdom:
+    case Lang.English:
       return 'English (United Kingdom)'
     case Lang.Italy:
       return 'Italian (Italy)'
     case Lang.Sweden:
       return 'Swedish (Sweden)'
-    case Lang.Canada:
-      return 'French (Canada)'
     case Lang.Malaysia:
       return 'Malay (Malaysia)'
     case Lang.Germany:
@@ -82,8 +80,6 @@ export function getLangFullName (lang: Lang): string {
       return 'Portuguese (Portugal)'
     case Lang.Thailand:
       return 'Thai (Thailand)'
-    case Lang.Australia:
-      return 'English (Australia)'
     case Lang.Japan:
       return 'Japanese (Japan)'
     case Lang.Croatia:
@@ -100,20 +96,14 @@ export function getLangFullName (lang: Lang): string {
       return 'Arabic'
     case Lang.Hungary:
       return 'Hungarian (Hungary)'
-    case Lang.Taiwan:
-      return 'Chinese (Taiwan)'
     case Lang.Greece:
       return 'Greek (Greece)'
     case Lang.Russia:
       return 'Russian (Russia)'
-    case Lang.Ireland:
-      return 'English (Ireland)'
     case Lang.Catalonia:
       return 'Catalan (Spain)'
     case Lang.Norway:
       return 'Norwegian Bokmål (Norway)'
-    case Lang.IndiaEnglish:
-      return 'English (India)'
     case Lang.Denmark:
       return 'Danish (Denmark)'
     case Lang.SouthAfrica:
@@ -128,8 +118,6 @@ export function getLangFullName (lang: Lang): string {
       return 'Polish (Poland)'
     case Lang.CzechRepublic:
       return 'Czech (Czech Republic)'
-    case Lang.UnitedStatesSpanish:
-      return 'Spanish (United States)'
     default:
       return 'English'
   }
