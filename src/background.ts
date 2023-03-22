@@ -19,4 +19,3 @@ chrome.runtime.onMessage.addListener(async function (request: any, sender: chrom
 	const textToSpeech = createTextToSpeechFunction(await getLang(), await getRate());
 	await textToSpeech(request.message);
 });
-console.log(langArray.map((lang) => lang.label));
