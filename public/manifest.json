@@ -13,10 +13,7 @@
     "storage",
     "tts",
     "ttsEngine",
-    "webRequest",
-    "webNavigation",
-    "activeTab",
-    "tabs"
+    "activeTab"
   ],
   "background": {
     "service_worker": "background.js"
