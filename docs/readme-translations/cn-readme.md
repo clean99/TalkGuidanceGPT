@@ -8,7 +8,7 @@ TalkGuidance GPT 是一个为视觉障碍用户设计的 Chrome 扩展，旨在�
 
 ## 📖 使用方法
 
-安装并配置好 TalkGuidance GPT 后，只需使用 `Tab` 键浏览网页。当您关注不同的元素时，扩展程序将分析 DOM 并提供清晰、简洁的描述，帮助您了解元素的用途。
+安装并配置好 [TalkGuidanceGPT -- 谷歌扩展商店地址](https://chrome.google.com/webstore/detail/talkguidancegpt/bjfkdkgfaondbkddpifljpgbleilmljg?hl=zh-CN&authuser=0) 后 ，只需使用 `Tab` 键浏览网页。当您关注不同的元素时，扩展程序将分析 DOM 并提供清晰、简洁的描述，帮助您了解元素的用途。
 
 1. 点击浏览器右上角的 TalkGuidance GPT 图标（位于扩展图标中）。
 2. 在扩展弹出窗口中，您可以配置以下设置：
