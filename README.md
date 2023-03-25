@@ -2,6 +2,10 @@
 
 TalkGuidance GPT is a Chrome extension designed to make web browsing more accessible for visually impaired users. By utilizing GPT technology, this extension intelligently analyzes DOM elements and provides detailed information about them when users navigate using the Tab key. This innovative solution enables a more inclusive browsing experience, allowing blind users to better understand the purpose and function of website elements.
 
+## 🎨 Translations
+
+- [中文版本](./docs/readme-translations/cn-readme.md)
+
 ## 🎯 Features
 
 - GPT-powered analysis of DOM elements
