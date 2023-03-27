@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "TalkGuidanceGPT",
-  "version": "1.0",
+  "version": "1.1",
   "author": "Koh Hom",
   "short_name": "TalkGuidance",
   "description": "TalkGuidance is a screen reader powered by GPT, which designed to make web browsing more accessible for visually impaired users.",

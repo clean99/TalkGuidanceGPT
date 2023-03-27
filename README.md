@@ -44,6 +44,13 @@ To use TalkGuidance GPT, you'll need a GPT API key. Follow these steps to get on
 
 ## 📖 Usage
 
+Tutorial video:
+
+- [Youtube English Version TalkGuidance GPT Tutorial](https://youtu.be/SLkCEpOh8Bg)
+- [Youtube 中文版 TalkGuidance GPT Tutorial](https://youtu.be/PujIKqKt6G4)
+- [哔哩哔哩 英文版 TalkGuidance GPT Tutorial](https://www.bilibili.com/video/BV1KL411X7eP/?share_source=copy_web&vd_source=ef072e238192b2313b9c052a30d6f040)
+- [哔哩哔哩 中文版 TalkGuidance GPT Tutorial](https://www.bilibili.com/video/BV1Hh411V7iY/?share_source=copy_web&vd_source=ef072e238192b2313b9c052a30d6f040)
+
 With TalkGuidance GPT installed and configured, simply use the Tab key to navigate through web pages. As you focus on different elements, the extension will analyze the DOM and provide clear, concise descriptions to help you understand the element's purpose.
 
 Please note that TalkGuidance GPT is not intended for e-commerce use.

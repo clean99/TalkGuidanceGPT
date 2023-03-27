@@ -99,7 +99,7 @@ const prompts = async (lang: Lang): Promise<{
 
 	const introduceElement = async (prunedDom: PrunedElement): Promise<string> => {
 		const response = await prompt(`
-    Help a visually impaired user by describing this web element in ${langName}. Use everyday language and avoid technical terms. Keep the description concise and easy to understand. Element: ${JSON.stringify(prunedDom)}
+    Help a visually impaired user by describing this web element in ${langName}. Use everyday language and avoid technical terms(don't use id or key, etc.). Keep the description concise and easy to understand. Element: ${JSON.stringify(prunedDom)}
     Begin.
   `);
 
