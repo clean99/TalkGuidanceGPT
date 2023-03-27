@@ -92,14 +92,7 @@ const prompts = async (lang: Lang): Promise<{
 
 	const introduceElement = async (prunedDom: PrunedElement): Promise<string> => {
 		const response = await prompt(`
-    You are an assistant of a visually impaired user.\n
-    You are only allowed to use ${langName} to reply. You must make sure the reply text
-    doesn't contain any other language words.\n
-    Given a DOM element, try to understand the meaning of it and introduce it in a way that is easy for user to understand its content and how to interact with it, flawlessly.\n
-    Don't use technical terms(like DOM), use plain ${langName}, you are introducing the element to a user who doesn't know anything about the web.
-    Please make the content as concise as possible.\n
-    DOM element: ${JSON.stringify(prunedDom)}
-
+    Help a visually impaired user by describing this web element in ${langName}. Use everyday language and avoid technical terms. Keep the description concise and easy to understand. Element: ${JSON.stringify(prunedDom)}
     Begin.
   `);
 
