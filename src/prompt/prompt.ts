@@ -3,13 +3,18 @@ import { ChatCompletionRequestMessageRoleEnum, Configuration, OpenAIApi } from '
 import { Actions, Lang, ProcessedAction, PrunedElement } from '../types/interface';
 import { getLangFullName, getCodeBlock } from '../utils/utils';
 
+let controller: AbortController | null = null;
+
 const promptFactory = async (): Promise<(text: string) => Promise<string>> => {
 	const configuration = new Configuration({
 		apiKey: await getStorage('gpt-api-key')
 	});
 	const openai = new OpenAIApi(configuration);
-
 	return async (message: string) => {
+		if(controller) {
+			controller.abort();
+		}
+		controller = new AbortController();
 		const response = await openai.createChatCompletion({
 			model: 'gpt-3.5-turbo-0301',
 			messages: [
@@ -19,6 +24,8 @@ const promptFactory = async (): Promise<(text: string) => Promise<string>> => {
 				}
 			],
 			temperature: 0.8
+		}, {
+			signal: controller.signal
 		});
 		return response?.data?.choices?.[0]?.message?.content ?? '';
 	};
