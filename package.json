@@ -53,6 +53,7 @@
     "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
+    "gpt-prompt-kit": "^1.1.2",
     "jquery": "^3.6.4",
     "lodash": "^4.17.21",
     "openai": "^3.2.1",
